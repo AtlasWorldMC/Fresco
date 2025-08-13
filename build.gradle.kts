@@ -8,10 +8,9 @@ subprojects {
     apply(plugin = "java-library")
     apply(plugin = "idea")
     apply(plugin = "eclipse")
-    apply(plugin = "maven-publish")
 
     group = project.property("group") as String
-    version = project.property("version") as String
+    version = System.getenv("VERSION") ?: "undefined"
 
     repositories {
         mavenCentral()
