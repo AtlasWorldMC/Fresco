@@ -61,10 +61,10 @@ publishing {
             name = "AtlasWorld-Repository"
 
             val isSnapshot = System.getenv("RELEASE") != "true"
-            var release = URI.create("https://repository.atlasworld.fr/repository/maven-release/")
-            var snapshot = URI.create("https://repository.atlasworld.fr/repository/maven-snapshot/")
+            var release = URI.create("https://repository.atlasworld.fr/repository/maven-releases/")
+            var snapshot = URI.create("https://repository.atlasworld.fr/repository/maven-snapshots/")
 
-            url = if (isSnapshot) {release} else {snapshot}
+            url = if (isSnapshot) {snapshot} else {release}
 
             credentials {
                 username = System.getenv("REPO_USERNAME")
