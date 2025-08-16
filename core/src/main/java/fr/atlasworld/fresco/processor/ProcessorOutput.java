@@ -2,7 +2,7 @@ package fr.atlasworld.fresco.processor;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
-import fr.atlasworld.fresco.source.SourceEntry;
+import fr.atlasworld.fresco.source.ResourceEntry;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
@@ -45,7 +45,7 @@ public final class ProcessorOutput implements Closeable {
      *
      * @throws IOException if the entry could not be added.
      */
-    public void addEntry(@NotNull SourceEntry entry) throws IOException {
+    public void addEntry(@NotNull ResourceEntry entry) throws IOException {
         this.addEntry(entry, entry.fullPath());
     }
 
@@ -57,7 +57,7 @@ public final class ProcessorOutput implements Closeable {
      *
      * @throws IOException if the entry could not be added.
      */
-    public void addEntry(@NotNull SourceEntry entry, @NotNull String location) throws IOException {
+    public void addEntry(@NotNull ResourceEntry entry, @NotNull String location) throws IOException {
         Objects.requireNonNull(entry, "Entry cannot be null!");
         Objects.requireNonNull(location, "Location cannot be null!");
 

@@ -5,7 +5,7 @@ import fr.atlasworld.fresco.pack.PackMeta;
 import fr.atlasworld.fresco.processor.ProcessorOutput;
 import fr.atlasworld.fresco.processor.ResourceProcessor;
 import fr.atlasworld.fresco.source.EntryType;
-import fr.atlasworld.fresco.source.SourceEntry;
+import fr.atlasworld.fresco.source.ResourceEntry;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
@@ -25,12 +25,12 @@ public final class FrescoProcessor implements Closeable {
 
     private final @NotNull PackMeta meta;
     private final Logger logger;
-    private final @NotNull Iterable<SourceEntry> entries;
+    private final @NotNull Iterable<ResourceEntry> entries;
     private final Map<EntryType, Set<ResourceProcessor>> processors;
     private final ProcessorOutput output;
     private final PackDefinition definition;
 
-    private FrescoProcessor(@NotNull PackMeta meta, @NotNull Logger logger, @NotNull Iterable<SourceEntry> entries, Map<EntryType, Set<ResourceProcessor>> processors, @NotNull File outputFile, PackDefinition definition) throws IOException {
+    private FrescoProcessor(@NotNull PackMeta meta, @NotNull Logger logger, @NotNull Iterable<ResourceEntry> entries, Map<EntryType, Set<ResourceProcessor>> processors, @NotNull File outputFile, PackDefinition definition) throws IOException {
         this.meta = meta;
         this.logger = logger;
         this.entries = entries;
@@ -46,7 +46,7 @@ public final class FrescoProcessor implements Closeable {
     public void process() {
         Set<ResourceProcessor> allTypeProcessors = this.processors.computeIfAbsent(EntryType.ALL, k -> Set.of());
 
-        for (SourceEntry entry : this.entries) {
+        for (ResourceEntry entry : this.entries) {
             if (entry.isDirectory())
                 continue;
 
@@ -118,7 +118,7 @@ public final class FrescoProcessor implements Closeable {
         private Logger logger;
 
         private final Map<EntryType, Set<ResourceProcessor>> processors;
-        private final Set<SourceEntry> entries;
+        private final Set<ResourceEntry> entries;
 
         private File outputFile;
         private PackDefinition packDefinition;
@@ -194,7 +194,7 @@ public final class FrescoProcessor implements Closeable {
          *
          * @return instance of this {@link Builder}.
          */
-        public Builder addEntry(@NotNull SourceEntry entry) {
+        public Builder addEntry(@NotNull ResourceEntry entry) {
             Objects.requireNonNull(entry, "entry must not be null!");
             this.entries.add(entry);
             return this;
@@ -207,7 +207,7 @@ public final class FrescoProcessor implements Closeable {
          *
          * @return instance of this {@link Builder}.
          */
-        public Builder addEntries(@NotNull Collection<SourceEntry> entries) {
+        public Builder addEntries(@NotNull Collection<ResourceEntry> entries) {
             Objects.requireNonNull(entries, "entries must not be null!");
             this.entries.addAll(entries);
             return this;

@@ -1,6 +1,6 @@
 package fr.atlasworld.fresco.entity;
 
-import fr.atlasworld.fresco.source.SourceEntry;
+import fr.atlasworld.fresco.source.ResourceEntry;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
@@ -8,7 +8,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-public final class GradleSourceEntry implements SourceEntry {
+public final class GradleResourceEntry implements ResourceEntry {
     public static final int ELEMENT_COUNT = 4; // 3 elements + 1 for the assets/ dir
 
     private static final int NAMESPACE_INDEX = 1;
@@ -19,7 +19,7 @@ public final class GradleSourceEntry implements SourceEntry {
     private final String relativePath;
     private final File source;
 
-    public GradleSourceEntry(File source, File rootDir) {
+    public GradleResourceEntry(File source, File rootDir) {
         this.relativePath = rootDir.toPath().relativize(source.toPath()).toString();
         this.pathElements = this.relativePath.split("/");
         this.source = source;

@@ -1,6 +1,6 @@
 package fr.atlasworld.fresco.processor;
 
-import fr.atlasworld.fresco.source.SourceEntry;
+import fr.atlasworld.fresco.source.ResourceEntry;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
@@ -22,5 +22,5 @@ public interface ResourceProcessor {
      *
      * @throws IOException if the processor could not properly process the entry.
      */
-    boolean process(@NotNull SourceEntry entry, @NotNull ProcessorOutput output) throws IOException;
+    boolean process(@NotNull ResourceEntry entry, @NotNull ProcessorOutput output) throws IOException;
 }

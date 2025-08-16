@@ -12,7 +12,7 @@ import java.io.InputStreamReader;
 /**
  * Represents a source entry that holds all meta-data and file inside it.
  */
-public interface SourceEntry {
+public interface ResourceEntry {
 
     /**
      * The entry file name.

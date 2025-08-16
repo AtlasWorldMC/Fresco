@@ -2,7 +2,7 @@ package fr.atlasworld.fresco.task;
 
 import fr.atlasworld.fresco.FrescoProcessor;
 import fr.atlasworld.fresco.config.PackMetaConfig;
-import fr.atlasworld.fresco.entity.GradleSourceEntry;
+import fr.atlasworld.fresco.entity.GradleResourceEntry;
 import fr.atlasworld.fresco.pack.PackDefinition;
 import fr.atlasworld.fresco.pack.PackMeta;
 import fr.atlasworld.fresco.processor.ResourceProcessor;
@@ -181,7 +181,7 @@ public class ResourcePackTask extends DefaultTask {
                 if (!relativePath.startsWith(FrescoProcessor.ASSETS_DIR))
                     continue;
 
-                GradleSourceEntry entry = new GradleSourceEntry(file, rootFile);
+                GradleResourceEntry entry = new GradleResourceEntry(file, rootFile);
                 builder.addEntry(entry);
             }
         });
