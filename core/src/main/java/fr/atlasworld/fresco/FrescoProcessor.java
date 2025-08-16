@@ -56,12 +56,12 @@ public final class FrescoProcessor implements Closeable {
             else
                 type = this.definition.determineType(entry.type());
 
-            this.logger.warn("Processing entry '{}' as type {}", entry.fullPath(), type);
+            this.logger.debug("Processing entry '{}' as type {}", entry.fullPath(), type);
 
             boolean copyEntry = true;
             Set<ResourceProcessor> processors = this.processors.computeIfAbsent(type, k -> Set.of());
             for (ResourceProcessor processor : processors) {
-                logger.warn("Calling processor '{}' for entry '{}'", processor.getClass().getSimpleName(), entry.fullPath());
+                logger.trace("Calling processor '{}' for entry '{}'", processor.getClass().getSimpleName(), entry.fullPath());
                 try {
                     if (!processor.process(entry, this.output))
                         copyEntry = false;

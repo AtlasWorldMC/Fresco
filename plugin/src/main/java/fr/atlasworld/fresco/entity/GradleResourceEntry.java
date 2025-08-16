@@ -21,7 +21,7 @@ public final class GradleResourceEntry implements ResourceEntry {
 
     public GradleResourceEntry(File source, File rootDir) {
         this.relativePath = rootDir.toPath().relativize(source.toPath()).toString();
-        this.pathElements = this.relativePath.split("/");
+        this.pathElements = this.relativePath.split("/", ELEMENT_COUNT);
         this.source = source;
 
         if (pathElements.length < ELEMENT_COUNT - 1) // Need to take into account files in the root of the namespace (ex: assets/minecraft/sounds.json)
