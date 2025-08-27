@@ -10,7 +10,7 @@ subprojects {
     apply(plugin = "eclipse")
 
     group = project.property("group") as String
-    version = System.getenv("VERSION") ?: "undefined"
+    version = System.getenv("VERSION") ?: "dev"
 
     repositories {
         mavenCentral()
