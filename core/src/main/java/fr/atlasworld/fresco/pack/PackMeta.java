@@ -1,6 +1,9 @@
 package fr.atlasworld.fresco.pack;
 
+import com.google.gson.JsonObject;
 import org.jetbrains.annotations.NotNull;
+
+import static fr.atlasworld.fresco.processor.ProcessorOutput.GSON;
 
 /**
  * Represents pack meta contained inside the resource packs.
@@ -14,6 +17,12 @@ public record PackMeta(String description, int packFormat) {
 
     @Override
     public @NotNull String toString() {
-        return "{\"pack\":{\"description\":\"" + this.description + "\",\"pack_format\":" + this.packFormat + "}}";
+        JsonObject pack = new JsonObject();
+        pack.addProperty("description", this.description);
+        pack.addProperty("pack_format", this.packFormat);
+
+        JsonObject root = new JsonObject();
+        root.add("pack", pack);
+        return GSON.toJson(root);
     }
 }
